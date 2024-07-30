@@ -106,7 +106,7 @@ Se construyó un algoritmo en el sofware PSeInt que simula un sistema de precios
 	  	res=precio + ((precio*impuesto)/100)
   	FinFuncion
    ```
-    Función Aplicar Descuento por Cantidad
+   Función Aplicar Descuento por Cantidad
    ```scss
     Funcion res <- Aplicar_Dcto_x_Cant (precio,cantidad)
     //	De 2 a 4 Productos se aplica 5% de Descuento
@@ -128,129 +128,302 @@ Se construyó un algoritmo en el sofware PSeInt que simula un sistema de precios
 		  FinSi
 	  FinFuncion
    ```
-- `nombre_estudiante` es una cadena que almacenará el nombre del estudiante.
-- `calificaciones` es un arreglo unidimensional de enteros que almacenará las calificaciones de las materias.
-- `resultados` es un arreglo unidimensional de cadenas que almacenará los resultados de las materias (aprobado o reprobado).
-- `i`, `suma` y `promedio` son enteros que se usarán para controlar los bucles y realizar cálculos.
+   Función Aplicar Descuento
+   ```scss
+   Funcion res <- Costo_Envio (peso,distancia,cantidad)
+	//	Se aplica CLP$10 por Kilometro de Distancia para efectos de Envio
+	//	Se aplica un 50% de Descuento al Envio
+		res=(peso*distancia*cant*10)/2 
+   FinFuncion
+   ```
+   Función Menú de Inicio
+   ```scss
+   Funcion res<- Menu_Inicio
+		opc = 0
+		Borrar Pantalla
+		Escribir "+=========================================================================================+"
+		Escribir "|                .___  ___.  _______  .__   __.  __    __                                 |" 
+		Escribir "|                |   \/   | |   ____| | \  |  | |  |  |  |                                |"
+		Escribir "|                |  \  /  | |  |__    |   \|  | |  |  |  |                                |"
+		Escribir "|                |  |\/|  | |   __|   |  . `  | |  |  |  |                                |"
+		Escribir "|                |  |  |  | |  |____  |  |\   | |  `--´  |                                |"
+		Escribir "|                |__|  |__| |_______| |__| \__|  \______/                                 |"
+		Escribir "+=========================================================================================+"
+		Escribir "|   1. Revisar Inventario de Productos                                                    |"
+		Escribir "|   2. Revisar Listado de Destinos                                                        |"
+		Escribir "|   3. Salir                                                                              |"
+		Escribir "+=========================================================================================+"
+		// ingresar una opcion
+		Escribir "Elija una opción (1-3): "
+		Leer opc
+		Borrar Pantalla
+		
+		Mientras opc >= 4 Hacer
+			Escribir "Opción Invalida Intenta de Nuevo"
+			Escribir ""
+			Esperar 1 Segundos
+			Borrar Pantalla
+			Escribir "+=========================================================================================+"
+			Escribir "|                .___  ___.  _______  .__   __.  __    __                                 |" 
+			Escribir "|                |   \/   | |   ____| | \  |  | |  |  |  |                                |"
+			Escribir "|                |  \  /  | |  |__    |   \|  | |  |  |  |                                |"
+			Escribir "|                |  |\/|  | |   __|   |  . `  | |  |  |  |                                |"
+			Escribir "|                |  |  |  | |  |____  |  |\   | |  `--´  |                                |"
+			Escribir "|                |__|  |__| |_______| |__| \__|  \______/                                 |"
+			Escribir "+=========================================================================================+"
+			Escribir "|   1. Revisar Inventario de Productos                                                    |"
+			Escribir "|   2. Revisar Listado de Destinos                                                        |"
+			Escribir "|   3. Salir                                                                              |"
+			Escribir "+=========================================================================================+"
+			Escribir "Elija una opción (1-3): "
+			Leer opc
+			Borrar Pantalla
+		FinMientras
 
+		res<-opc
+   FinFuncion
+   ```
+   Función Lugar de Envio
+   ```scss
+   Funcion res<-Lugar_Envio
+		Definir opc2 Como Entero
+		opc2=0
+		Borrar Pantalla
+		Escribir "(1) Interior Anillo Americo Vespucio"
+		Escribir "(2) Dentro RM"
+		Escribir "(3) Regiones I - XV excepto XII"
+		Escribir "(4) Región XII"
+		Escribir "(5) Extranjero"
+		Escribir "Favor ingresar una Opción"
+		
+		Leer opc2
+		
+		
+		Mientras opc2>5 y opc2<1 Hacer
+			Escribir "Opción Invalida Intenta de Nuevo"
+			Escribir ""
+			Esperar 1 Segundos
+			Borrar Pantalla
+			Escribir "(1) Interior Anillo Americo Vespucio"
+			Escribir "(2) Dentro RM"
+			Escribir "(3) Regiones I - XV excepto XII"
+			Escribir "(4) Región XII"
+			Escribir "(5) Extranjero"
+			Escribir "Favor ingresar una Opción"
+			leer opc2
+		FinMientras
+		res<-opc2
+   FinFuncion
+   ```
+   Función Rellena Espacios Vacios para calzar Tablas
+   ```scss
+   Funcion res<-Rellena_Espacios(dato,block_size)
+		Definir esp_void Como Caracter
+		Si dato>block_size
+			block_size<-dato
+		SiNo
+			block_size<-block_size-dato
+		FinSi
+		Para i<-1 hasta block_size Con Paso 1
+			esp_void <- Concatenar(esp_void," ")
+		FinPara
+		res<-esp_void
+   FinFuncion
+   ```
+2. Se realizan las definiciones de las variables agrupadas en categorias:
+
+Variables manejadas por el usuario
 ```scss
-definir nombre_estudiante como cadena
-definir calificaciones[3] como entero
-definir resultados[3] como cadena
-definir i, suma, promedio como entero
+//	Variables manejadas por el usuario
+		Definir pre_orig, dcto, imp_apli, peso_prod, cant_prod, dist_dest, kilometros Como Entero
+		Definir Destinos_Nombres, NombresProductos, nom_prod, nom_dest Como Caracter
 ```
 
-
-2. Se solicita al usuario que ingrese el nombre del estudiante:
-
-- Se muestra un mensaje en la pantalla pidiendo el nombre del estudiante.
-- El nombre del estudiante se lee y se guarda en la variable `nombre_estudiante`.
-
+Variables de control
 ```scss
-escribir "Introduce el nombre del estudiante: "
-leer nombre_estudiante
+//	Variables de control
+		Definir id_prod, id_dest, opc_menu, opc_envio Como Entero
 ```
 
-
-3. Se utiliza un bucle `Para` para leer las calificaciones de las materias:
-
-- El bucle se ejecuta 3 veces (desde `i = 0` hasta `i = 2`) para leer las calificaciones de las 3 materias.
-- En cada iteración del bucle, se solicita al usuario que ingrese la calificación de la materia actual (i + 1) y se guarda en el arreglo `calificaciones`.
-
+Variables Variables de almacenamiento
 ```scss
-para i desde 0 hasta 2 hacer
-    escribir "Introduce la calificación de la materia ", i + 1, ": "
-    leer calificaciones[i]
-fin para
+//	Variables de almacenamiento
+		Definir pre_dcto, pre_imp, pre_dcto_cant, sub_total, sub_total_red, pre_envio, pre_dest Como Real
+		Definir valor_desc,valor_desc_cant, valor_imp, ajus_sen Como Real
 ```
 
-
-4. Se realiza la suma de las calificaciones y se calcula el promedio:
-
-- Se inicializa la variable `suma` en 0.
-- Se utiliza otro bucle `Para` para recorrer el arreglo calificaciones y sumar sus elementos.
-- En cada iteración del bucle, se suma la calificación actual (`calificaciones[i]`) a la variable `suma`.
-- Después de recorrer el arreglo, se divide la suma entre 3 (el número de materias) y se guarda el resultado en la variable `promedio`.
-
+Variables de dimensiones de los Arreglos
 ```scss
-suma <- 0
-para i desde 0 hasta 2 hacer
-    suma <- suma + calificaciones[i]
-fin para
-promedio <- suma / 3
-
+//	Variables de dimensiones de los Arreglos
+		Definir filas_array_1,filas_array_2, filas_array_3, columnas_array_1, columnas_array_2 Como Entero
 ```
 
-5. Se determina si el estudiante ha aprobado o reprobado cada materia:
-
-- Se utiliza un bucle `Para` para recorrer el arreglo calificaciones y evaluar cada calificación.
-. En cada iteración del bucle, se utiliza una estructura de control Si para evaluar si la calificación actual (`calificaciones[i]`) es mayor o igual a 6.
-- Si la calificación es mayor o igual a 6, se guarda la cadena "Aprobado" en el arreglo resultados en la posición correspondiente.
-- Si la calificación es menor a 6, se guarda la cadena "Reprobado" en el arreglo resultados en la posición correspondiente.
-
+Variables para manejos de tablas
 ```scss
-para i desde 0 hasta 2 hacer
-    si (calificaciones[i] >= 6) entonces
-        resultados[i] <- "Aprobado"
-    sino
-        resultados[i] <- "Reprobado"
-    fin si
-fin para
+// Variables para manejos de tablas		
+		Definir cont_table_cant,cont_table_prec,cont_table_total,cont_table_imp,cont_table_valor_imp Como Caracter
+		Definir cont_table_prec_envio,cont_table_valor_desc, cont_table_valor_desc_cant, cont_table_ajus_sen Como Caracter
+		Definir cont_table_sub_total_red,cont_table_inve_prec_envio, cont_table_inve_total Como Caracter	
+		Definir cont_table_inve_prec_lis, cont_table_inve_cup_dcto, cont_table_inve_desc_cant, cont_table_inve_imp Como Caracter
+```  
 
+
+3. Asignaciones Iniciales:
+
+- `id_prod = 0` Variable utilizada como contador y como identificador indice de productos.
+- `pre_orig = 0` Variable para el ingreso del precio original.
+- `dcto = 0` Variable para el ingreso del valor en % del cupón de descuento.
+- `imp_apli = 0` Variable para el ingreso del valor en % del impuesto a aplicar.
+- `peso_prod = 0` Variable para el ingreso del valor en kilos del producto (se asume como 1Kg como peso minimo).
+- `nom_prod = "Na"` Variable para el ingreso de la cadena de texto asociada al nombre del producto.
+- `id_dest = 0` Variable utilizada como contador y como identificador indice de destinos.
+- `dist_dest = 0` Variable para el ingreso del valor en kilometros para el envio (se asume como 1Km como distancia minima).
+- `pre_dest = 0` Variable de almacenamiento para la operatoria del precio de envio.
+- `nom_dest = "Nada"` Variable para el ingreso de la cadena de texto asociada al nombre del destino de envio.
+- `filas_array_1 = 1` Variable de control de dimensiones de arreglos.
+- `filas_array_2 = 1` Variable de control de dimensiones de arreglos.
+- `filas_array_3 = 1` Variable de control de dimensiones de arreglos.
+
+4. Dimensionamiento de Arreglos:
+
+Arreglo de Enteros para Almacenar datos de productos ingresados por el Usuario + ID
+- `Dimension Inventario[filas_array_1,5]` Dimension llamada Inventario de `filas_array_1` filas y 5 columnas.
+Relleno de Arreglo Inventario
+```scss
+//	Relleno de Arreglo Inventario	
+	Para i<-1 Hasta filas_array_1 Con Paso 1
+		Inventario[filas_array_1,1]<-id_prod
+		Inventario[filas_array_1,2]<-pre_orig
+		Inventario[filas_array_1,3]<-dcto
+		Inventario[filas_array_1,4]<-imp_apli
+		Inventario[filas_array_1,5]<-peso_prod
+	FinPara
 ```
 
-6. Finalmente, se muestran los resultados:
-
-- Se escribe el nombre del estudiante en la pantalla.
-- Se utiliza un bucle `Para` para recorrer los arreglos calificaciones y resultados y mostrar la calificación - y el resultado de cada materia.
-- Se escribe el promedio del estudiante en la pantalla.
-
+Arreglo de Cadenas para Almacenar datos Ingresados por el Usuario	
+- `Dimension NombresProductos[filas_array_1]` Dimension llamada Inventario de `filas_array_1` filas.
+Relleno de Arreglo NombreProductos
 ```scss
-escribir "Nombre del estudiante: ", nombre_estudiante
-para i desde 0 hasta 2 hacer
-    escribir "Calificación de la materia ", i + 1, ": ", calificaciones[i], " - ", resultados[i]
-fin para
-escribir "Promedio: ", promedio
+//	Relleno de Arreglo NombresProductos	
+	Para j<-1 Hasta filas_array_1 Con Paso 1
+		NombresProductos[filas_array_1]<-nom_prod
+	FinPara
+```
+Arreglo de Enteros para Almacenar datos de envios ingresados por el Usuario + ID	
+- `Dimension Destinos[filas_array_2,3]` Dimension llamada Inventario de `filas_array_2` filas y 3 columnas.
+Relleno de Arreglo Destinos
+```scss
+//	Relleno de Arreglo Destinos	
+	Para k<-1 Hasta filas_array_1 Con Paso 1
+		Destinos[filas_array_2,1]<-id_dest
+		Destinos[filas_array_2,2]<-dist_dest
+		Destinos[filas_array_2,3]<-pre_dest
+	FinPara
 ```
 
+Arreglo de Cadenas para Almacenar datos de envios ingresados por el Usuario	
+- `Dimension NombresDestinos[filas_array_2]` Dimension llamada Inventario de `filas_array_2` filas.
+Relleno de Arreglo NombreDestinos
+```scss
+//	Relleno de Arreglo NombreDestinos
+	Para h<-1 Hasta filas_array_1 Con Paso 1
+		NombresDestinos[filas_array_2]<-nom_dest
+	FinPara
+```
 
-La solución en conjunto sería:
+Arreglo de Enteros para Almacenar Operatorias entre Valores de Productos y Envios	
+- `Dimension Valores[filas_array_3,10]` Dimension llamada Inventario de `filas_array_3` filas y 10 columnas.
+Relleno de Arreglo Valores
+```scss
+//Se rellena el Arreglo Valores con Operatorias entre Valores del Arreglo
+				Para l<-1 hasta filas_array_3 Hacer
+				//  Cantidad
+					Valores[filas_array_3,1]= cant_prod
+				//	Precio con Cupón de Descuento Invocando Funcion Aplicar_Dcto
+					Valores[filas_array_3,2]= Aplicar_Dcto(Inventario[filas_array_1,2],Inventario[filas_array_1,3])
+				//	Precio con Descuento por Cantidad Invocando Funcion Aplicar_Dcto_x_Cant
+					Valores[filas_array_3,3]=Aplicar_Dcto_x_Cant (Valores[filas_array_3,2],Valores[filas_array_3,1])
+				//	Precio con Impuestos Invocando Funcion Aplicar_Imp
+					Valores[filas_array_3,4]=Aplicar_Imp(Valores[filas_array_3,3],Inventario[filas_array_1,4])
+				//	Sub-Total
+					Valores[filas_array_3,5]=Valores[filas_array_3,4]*Valores[filas_array_3,1]+Destinos[filas_array_2,2]
+				//	Valor del Descuento por Cupón
+					Valores[filas_array_3,6]=Valores[filas_array_3,2]-Inventario[filas_array_1,2]
+				//	Valor del Descuento por Cantidad
+					Valores[filas_array_3,7]=Valores[filas_array_3,3]-Valores[filas_array_3,2]
+				//	Valor Impuestos Aplicados
+					Valores[filas_array_3,8]=Valores[filas_array_3,4]-Valores[filas_array_3,3]
+				//	Valor Ajuste Sencillo Invocando Funcion Redon y Trunc (Ambas Parte de PSeInt)
+					Valores[filas_array_3,9]=redon(Valores[filas_array_3,5])-trunc(Valores[filas_array_3,5])
+				//	SubTotal Redondeado Invocando Funcion Redon(Parte de PSeInt)
+					Valores[filas_array_3,10]=redon(Valores[filas_array_3,5])
+				FinPara
+```
+
+5. Reasignaciones de Variables para efectos de Ciclos
+```scss
+//	Asignacions de Variables de Arreglos para efectos de ciclos	
+	filas_array_1 = 0
+	filas_array_2 = 0
+```
+
+6. Despliegue en Pantalla de Banner de Presentación
 
 ```scss
-definir nombre_estudiante como cadena
-definir calificaciones[3] como entero
-definir resultados[3] como cadena
-definir i, suma, promedio como entero
+// Despliegue en Pantalla de Banner de Presentación	
+	Escribir ""
+	Escribir ""
+	Escribir ""
+//	Esperar 1 Segundos
+	Escribir "   _____ _      __                              __        ____                 _           "
+//	Esperar 1 Segundos
+	Escribir "  / ___/(_)____/ /____  ____ ___  ____ _   ____/ /__     / __ \________  _____(_)___  _____"
+//	Esperar 1 Segundos
+	Escribir "  \__ \/ / ___/ __/ _ \/ __ `__ \/ __ `/  / __  / _ \   / /_/ / ___/ _ \/ ___/ / __ \/ ___/"
+//	Esperar 1 Segundos
+	Escribir " ___/ / (__  ) /_/  __/ / / / / / /_/ /  / /_/ /  __/  / ____/ /  /  __/ /__/ / /_/ (__  )"
+//	Esperar 1 Segundos
+	Escribir "/____/_/____/\__/\___/_/ /_/ /_/\__,_/   \__,_/\___/  /_/   /_/   \___/\___/_/\____/____/"  
+//	Esperar 1 Segundos
+	Escribir ""
+	Escribir ""
+	Escribir "+=========================================================================================+"
+	Escribir "|                Diseñado y Codificado por Alcibiades Oyazún Neilson                      |"
+	Escribir "+=========================================================================================+"
+	Escribir "Presione una tecla para Comenzar"
+	Esperar Tecla
+```
+7. Despliegue en Funcion Menu_Inicio
 
-escribir "Introduce el nombre del estudiante: "
-leer nombre_estudiante
+```scss
+	Escribir ""
+	Escribir ""
+	Escribir ""
+// Se Almacena una Variable para volver al Menú	
+	opc_return=1
+//	Se ejecuta la condicion de Retorno al Menú	
+	Mientras opc_return<=2 Hacer
+//	Condición para Seguir al Menú
+	Si opc_return=1 Entonces
+		//	Se invoca a la Función Menu_Inicio que el Retornos se Almacenara en opc_menu
+		opc_menu = Menu_Inicio
+		//	Selección de Caso Según opc_menu
+```
+Para efectos de ciclos se asigna `opc_return=1`
+Se ejecuta el ciclo mientras por la asignación anterior
+Se ejecuta la función `Menu_Inicio`
+El resultado de la función se almacena en la variable `opc_menu`
 
-para i desde 0 hasta 2 hacer
-    escribir "Introduce la calificación de la materia ", i + 1, ": "
-    leer calificaciones[i]
-fin para
 
-suma <- 0
-para i desde 0 hasta 2 hacer
-    suma <- suma + calificaciones[i]
-fin para
-promedio <- suma / 3
 
-para i desde 0 hasta 2 hacer
-    si (calificaciones[i] >= 6) entonces
-        resultados[i] <- "Aprobado"
-    sino
-        resultados[i] <- "Reprobado"
-    fin si
-fin para
 
-escribir "Nombre del estudiante: ", nombre_estudiante
-para i desde 0 hasta 2 hacer
-    escribir "Calificación de la materia ", i + 1, ": ", calificaciones[i], " - ", resultados[i]
-fin para
-escribir "Promedio: ", promedio
+
+
+```scss
+
 
 ```
+ 
 
 **Validación** Se probara el algoritmo en base a la idea de que un cliente desea comprar un par de zapatos deportivos en línea. 
 
