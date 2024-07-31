@@ -40,7 +40,7 @@ El objetivo principal de este proyecto fue construir un pseudocódigo que permit
 
 ## 3. Demo
 
-Se puedes descargar el código del Algoritmo en PSeInt en este vínculo: [LINK](https://github.com/UDDBootcamp/7M_FULLSTACK_M1_PROY/tree/master/demo)
+Se puedes descargar el código del Algoritmo en PSeInt en este vínculo: [LINK](https://github.com/Alcibiades-Coder/Proyecto_1_DWFS_16/blob/main/Proyecto%201%20-%20Algoritmo%20de%20Sistema%20de%20Costos%20-%20Alcibiades%20Oyarzun%20DWFS16.psc)
 
 Al acceder, observarás que se resuelve la problemática presentada con un enfoque de este proyecto orientado a un negocio pequeño donde un sistema de precios resuelve de forma simple el almacenamiento temporal de lo vendido durante la ejecución del código, donde además se puede consultar un pequeño inventario y realizar cálculos de precios, descuentos, impuestos y calcular costos de envíos.
 
